@@ -21,9 +21,9 @@ The visual reference is the Brand Guidelines design file. This package is its im
 **Website (PHP / plain HTML)** — pin a version from the CDN:
 
 ```html
-<link rel="preload" href="https://cdn.jsdelivr.net/gh/OWNER/dg-design@1.0.0/dist/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OWNER/dg-design@1.0.0/dist/dg.min.css">
-<script src="https://cdn.jsdelivr.net/gh/OWNER/dg-design@1.0.0/dist/dg.js" defer></script>
+<link rel="preload" href="https://cdn.jsdelivr.net/gh/DracoGenesis/dg-design@1.0.0/dist/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DracoGenesis/dg-design@1.0.0/dist/dg.min.css">
+<script src="https://cdn.jsdelivr.net/gh/DracoGenesis/dg-design@1.0.0/dist/dg.js" defer></script>
 ```
 
 Or copy `dist/` into the site (e.g. `/assets/dg/`) during deploy and link it locally.
@@ -31,7 +31,7 @@ Or copy `dist/` into the site (e.g. `/assets/dg/`) during deploy and link it loc
 **DG Forge (Electron) or any npm project:**
 
 ```bash
-npm install github:OWNER/dg-design#v1.0.0
+npm install github:DracoGenesis/dg-design#v1.0.0
 ```
 
 ```js
