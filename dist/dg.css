@@ -751,7 +751,7 @@ html.dg-scroll-lock { overflow: hidden; }
 a.dg-card--tool, .dg-card--tool { text-decoration: none; transition: border-color var(--dg-duration-fast) var(--dg-ease-forge), transform var(--dg-duration-base) var(--dg-ease-forge); }
 .dg-card--tool:hover { border-color: var(--dg-text-disabled); color: var(--dg-text); }
 .dg-card--tool:focus-visible { outline-offset: 3px; }
-.dg-card__cta { font: 600 14px/1 var(--dg-font-sans); color: var(--dg-accent-text); }
+.dg-card__cta { margin-top: auto; padding-top: var(--dg-space-1); font: 600 14px/1 var(--dg-font-sans); color: var(--dg-accent-text); }
 .dg-card--tool:hover .dg-card__cta { color: var(--dg-accent-text-hover); }
 .dg-icon-tile { flex: none; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--dg-radius-alert); background: var(--dg-accent-tint); color: var(--dg-accent-text); }
 .dg-icon-tile svg { width: 22px; height: 22px; }
@@ -777,7 +777,7 @@ a.dg-card--product:hover { color: var(--dg-text); }
 .dg-fan[data-count="3"] > img { --_overlap: -.295; }
 .dg-fan[data-count="4"] > img { --_overlap: -.36; }
 .dg-fan[data-count="5"] > img { --_overlap: -.43; }
-@media (max-width: 767.98px) { .dg-fan-stage { height: 230px; } .dg-fan { --dg-card-w: 170px; } .dg-fan[data-count="1"] { --dg-card-w: 190px; } }
+@media (max-width: 767.98px) { .dg-fan-stage { height: 230px; } .dg-fan { --dg-card-w: 170px; } .dg-fan[data-count="1"] { --dg-card-w: 190px; } .dg-fan[data-count="3"] > img { --_overlap: -.33; } .dg-fan[data-count="5"] > img { --_overlap: -.46; } }
 
 /* Playing card image (proxy front/back) — 63×88 ratio, 4.75% radius */
 .dg-mtg-card { width: var(--dg-card-w, 220px); aspect-ratio: 63 / 88; height: auto; border-radius: 4.75% / 3.4%; box-shadow: 0 24px 50px rgba(0,0,0,.7); }
