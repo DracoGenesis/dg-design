@@ -1,0 +1,97 @@
+/*! @dracogenesis/design v1.0.0 · generated — edit tokens/ or src/, not dist/ */
+/* Navigation — global header, dropdown, mobile menu, sidebar (DG Forge), breadcrumb,
+   announcement bar (Ember Band), notice banner, footer.
+   Navigation moves between pages; tabs switch views inside one page. */
+
+/* ---- Global header: 72px, sticky, 85% Obsidian + 12px blur ---- */
+.dg-header { position: sticky; top: 0; z-index: var(--dg-z-sticky); background: color-mix(in srgb, var(--dg-bg) 85%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--dg-border); }
+.dg-header:has(+ .dg-notice), .dg-header--flush { border-bottom: 0; } /* the notice banner's Ember rule replaces this border */
+.dg-nav { display: flex; align-items: center; gap: 36px; min-height: var(--dg-nav-height); }
+.dg-nav__logo { display: flex; flex: none; }
+.dg-nav__logo img { width: 188px; height: 24px; }
+.dg-nav__links { display: flex; align-items: center; gap: 28px; margin: 0; padding: 0; list-style: none; }
+.dg-nav__link { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 8px 0; border: 0; background: none; color: var(--dg-text-secondary); font: 500 15px/1 var(--dg-font-sans); cursor: pointer; white-space: nowrap; }
+.dg-nav__link:hover { color: var(--dg-text); }
+.dg-nav__link[aria-current="page"], .dg-nav__link[aria-current="true"] { color: var(--dg-text); box-shadow: inset 0 -2px 0 var(--dg-accent); }
+.dg-nav__link svg { width: 14px; height: 14px; transition: transform var(--dg-duration-base) var(--dg-ease-forge); }
+.dg-nav__link[aria-expanded="true"] svg { transform: rotate(180deg); }
+.dg-nav__end { display: flex; align-items: center; gap: var(--dg-space-3); margin-left: auto; }
+.dg-nav__menu-btn { display: none; margin-left: -10px; }
+.dg-cart-count { font-family: var(--dg-font-mono); font-weight: 500; }
+
+@media (max-width: 767.98px) {
+  .dg-nav { gap: var(--dg-space-3); }
+  .dg-nav__logo img { width: 150px; height: 19px; }
+  .dg-nav__links, .dg-nav__hide-sm { display: none !important; }
+  .dg-nav__menu-btn { display: inline-flex; }
+}
+
+/* ---- Dropdown menu (desktop nav, overflow menus): e2 ---- */
+.dg-menu-wrap { position: relative; }
+.dg-menu { position: absolute; top: calc(100% + 8px); left: -16px; z-index: var(--dg-z-dropdown); min-width: 240px; margin: 0; padding: 6px; list-style: none; background: var(--dg-surface-overlay); border: 1px solid var(--dg-border-strong); border-radius: var(--dg-radius-md); box-shadow: var(--dg-shadow-e2); }
+.dg-menu[hidden] { display: none; }
+.dg-menu a, .dg-menu button { display: flex; align-items: center; gap: var(--dg-space-3); width: 100%; min-height: 40px; padding: 0 12px; border: 0; border-radius: 6px; background: none; color: var(--dg-text-secondary); font: 500 14px/1.3 var(--dg-font-sans); text-align: left; cursor: pointer; }
+.dg-menu a:hover, .dg-menu button:hover, .dg-menu a:focus-visible, .dg-menu button:focus-visible { background: var(--dg-surface-raised); color: var(--dg-text); outline-offset: -2px; }
+.dg-menu__sep { height: 1px; margin: 6px 0; background: var(--dg-border-strong); }
+.dg-menu .dg-menu__danger { color: var(--dg-danger); }
+
+/* ---- Mobile menu: full-screen sheet under the header ---- */
+.dg-mobile-menu { position: fixed; inset: 0; z-index: var(--dg-z-overlay); display: flex; flex-direction: column; background: var(--dg-bg); overflow-y: auto; }
+.dg-mobile-menu[hidden] { display: none; }
+.dg-mobile-menu__bar { display: flex; align-items: center; gap: var(--dg-space-3); min-height: var(--dg-nav-height); padding: 0 var(--dg-margin); border-bottom: 1px solid var(--dg-border); }
+.dg-mobile-menu__bar .dg-nav__logo img { width: 150px; height: 19px; }
+.dg-mobile-menu__row { display: flex; align-items: center; justify-content: space-between; min-height: 60px; width: 100%; padding: 0 var(--dg-margin); border: 0; border-bottom: 1px solid var(--dg-border); background: none; color: var(--dg-text-secondary); font: 600 17px/1 var(--dg-font-sans); text-align: left; cursor: pointer; }
+.dg-mobile-menu__row[aria-expanded="true"], .dg-mobile-menu__row[aria-current="page"] { color: var(--dg-text); }
+.dg-mobile-menu__row svg { width: 18px; height: 18px; color: var(--dg-text-muted); transition: transform var(--dg-duration-base) var(--dg-ease-forge); }
+.dg-mobile-menu__row[aria-expanded="true"] svg { transform: rotate(180deg); color: var(--dg-accent-text); }
+.dg-mobile-menu__sub { display: flex; flex-direction: column; padding: var(--dg-space-2) 0; background: var(--dg-surface-sunken); border-bottom: 1px solid var(--dg-border); }
+.dg-mobile-menu__sub[hidden] { display: none; }
+.dg-mobile-menu__sub a { display: flex; align-items: center; min-height: 44px; padding: 0 var(--dg-margin) 0 calc(var(--dg-margin) + 16px); color: var(--dg-text-secondary); font: 500 15px/1.3 var(--dg-font-sans); }
+.dg-mobile-menu__sub a:hover { color: var(--dg-text); }
+.dg-mobile-menu__foot { margin-top: auto; padding: var(--dg-space-6) var(--dg-margin) var(--dg-space-8); display: flex; flex-direction: column; gap: var(--dg-space-3); }
+.dg-mobile-menu__foot .dg-btn { width: 100%; }
+html.dg-scroll-lock { overflow: hidden; }
+
+/* ---- Sidebar navigation (DG Forge) ---- */
+.dg-sidebar { display: flex; flex-direction: column; gap: 2px; width: var(--dg-sidebar); padding: 14px; background: var(--dg-surface-sunken); border-right: 1px solid var(--dg-surface-overlay); }
+.dg-sidebar__heading { padding: var(--dg-space-4) 10px var(--dg-space-2); font: 600 11px/1 var(--dg-font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--dg-text-muted); }
+.dg-sidebar__item { position: relative; display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px; border-radius: 6px; color: var(--dg-text-secondary); font: 500 14px/1 var(--dg-font-sans); }
+.dg-sidebar__item svg { width: 16px; height: 16px; flex: none; }
+.dg-sidebar__item:hover { background: var(--dg-surface-raised); color: var(--dg-text-secondary); }
+.dg-sidebar__item[aria-current="page"] { background: var(--dg-surface-overlay); color: var(--dg-text); font-weight: 600; }
+.dg-sidebar__item[aria-current="page"] svg, .dg-sidebar__item[aria-current="page"] .dg-sidebar__count { color: var(--dg-accent-text); }
+/* vertical Ember tick on the sidebar edge — outside the rounded item, so it stays straight */
+.dg-sidebar__item[aria-current="page"]::before { content: ""; position: absolute; left: -14px; top: 10px; width: 2px; height: 16px; background: var(--dg-accent); }
+.dg-sidebar__count { margin-left: auto; font: 500 11px/1 var(--dg-font-mono); color: var(--dg-text-muted); }
+
+/* ---- Breadcrumb ---- */
+.dg-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; font: 500 12px/1.5 var(--dg-font-mono); color: var(--dg-text-muted); }
+.dg-breadcrumb li + li::before { content: "/"; margin-right: 8px; color: var(--dg-text-disabled); }
+.dg-breadcrumb a { color: var(--dg-text-muted); }
+.dg-breadcrumb a:hover { color: var(--dg-text); }
+.dg-breadcrumb [aria-current="page"] { color: var(--dg-text-label); }
+
+/* ---- Announcement bar: Ember Band, above the header, dismissible (events, promos) ---- */
+.dg-announcement { position: relative; display: flex; align-items: center; justify-content: center; gap: var(--dg-space-3); min-height: 44px; padding: 8px 56px; text-align: center; font: 500 13px/1.4 var(--dg-font-sans); color: var(--dg-obsidian-100); }
+.dg-announcement a { font-weight: 600; }
+.dg-announcement__close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 767.98px) { .dg-announcement { justify-content: flex-start; flex-wrap: wrap; column-gap: var(--dg-space-2); row-gap: 2px; padding: 10px 52px 10px var(--dg-margin); text-align: left; } }
+
+/* ---- Notice banner: Ember 950 tint + Ember 800 rules. Persistent policy/legal. Not dismissible. ---- */
+.dg-notice { background: var(--dg-accent-wash); border-top: 1px solid var(--dg-accent-rule); border-bottom: 1px solid var(--dg-accent-rule); color: var(--dg-ember-300); font: 500 13px/1.5 var(--dg-font-sans); }
+.dg-notice > .dg-container { padding-block: 12px; }
+[data-theme="parchment"] .dg-notice { color: var(--dg-ember-800); }
+
+/* ---- Footer: carries the proxy disclaimer on every page ---- */
+.dg-footer { border-top: 1px solid var(--dg-border); }
+.dg-footer__inner { display: flex; flex-direction: column; gap: var(--dg-space-8); padding-block: var(--dg-space-12) var(--dg-space-8); }
+.dg-footer__cols { display: flex; flex-wrap: wrap; gap: var(--dg-space-12); }
+.dg-footer__brand { flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: var(--dg-space-4); }
+.dg-footer__brand img { width: 220px; height: 28px; }
+.dg-footer__disclaimer { max-width: 360px; font-size: 13px; line-height: 1.6; color: var(--dg-text-muted); }
+.dg-footer__col { flex: 1 1 160px; display: flex; flex-direction: column; gap: var(--dg-space-3); }
+.dg-footer__heading { font: 600 14px/1.4 var(--dg-font-sans); color: var(--dg-text); }
+.dg-footer__col a { font: 400 14px/1.4 var(--dg-font-sans); color: var(--dg-text-secondary); }
+.dg-footer__col a:hover { color: var(--dg-text); }
+.dg-footer__legal { padding-top: var(--dg-space-6); border-top: 1px solid var(--dg-border); font: 500 12px/1.5 var(--dg-font-mono); color: var(--dg-text-muted); }
+@media (max-width: 767.98px) { .dg-footer__cols { gap: var(--dg-space-8); } .dg-footer__inner { padding-block: var(--dg-space-12) var(--dg-space-8); } }

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DG Design System — Components</title>
+<link rel="preload" href="../dist/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../dist/fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../dist/dg.css">
+<script src="../dist/dg.js" defer></script>
+<style>
+  /* demo-only scaffolding */
+  .demo-label { font: 500 11px/1.5 var(--dg-font-mono); color: var(--dg-text-muted); }
+  .demo-row { display: flex; flex-wrap: wrap; gap: var(--dg-space-3); align-items: center; }
+  .demo-swatch { display: flex; flex-direction: column; gap: 6px; }
+  .demo-swatch i { display: block; height: 56px; border-radius: var(--dg-radius-sm); border: 1px solid var(--dg-border); }
+</style>
+</head>
+<body>
+<a class="dg-skip-link" href="#main">Skip to content</a>
+
+<div class="dg-announcement dg-tx dg-tx--band" data-dg-dismissible>
+  <span>Brew Night · Thursday 8 PM ET</span><a href="#">Set reminder →</a>
+  <button class="dg-btn dg-btn--icon dg-btn--sm dg-announcement__close" style="color:var(--dg-obsidian-300)" data-dg-dismiss="brew-night-demo" aria-label="Dismiss announcement"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<header class="dg-header">
+  <nav class="dg-container dg-nav" aria-label="Main">
+    <button class="dg-btn dg-btn--icon dg-nav__menu-btn" data-dg-menu-open="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" style="width:22px;height:22px"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="dg-nav__logo" href="#" aria-label="Draco Genesis home"><img src="../dist/assets/logo/logo-color-dark.svg" alt="Draco Genesis"></a>
+    <ul class="dg-nav__links">
+      <li class="dg-menu-wrap">
+        <button class="dg-nav__link" aria-current="true" data-dg-toggle data-dg-outside aria-expanded="false" aria-controls="menu-proxies">Buy Proxies<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <ul class="dg-menu" id="menu-proxies" hidden>
+          <li><a href="#">All proxies</a></li><li><a href="#">Land Essentials Pack</a></li><li><a href="#">Game Changers Pack</a></li><li><a href="#">Decklist Print Package</a></li><li><a href="#">Custom Proxy Design</a></li>
+        </ul>
+      </li>
+      <li><a class="dg-nav__link" href="#">Event Tools</a></li>
+      <li><a class="dg-nav__link" href="#">Booster Pack Guide</a></li>
+    </ul>
+    <div class="dg-nav__end">
+      <button class="dg-btn dg-btn--secondary dg-btn--sm dg-nav__hide-sm" id="theme-toggle" type="button">Parchment</button>
+      <a class="dg-btn dg-btn--secondary" href="#" aria-label="Cart, 0 items"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h11.2L21 8H6.2"/><circle cx="9" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg><span class="dg-nav__hide-sm">Cart · </span><span class="dg-cart-count">0</span></a>
+    </div>
+  </nav>
+</header>
+<div class="dg-notice"><div class="dg-container">Every Draco Genesis proxy carries our card back and a visible proxy mark. Playtest use only — not legal in sanctioned play.</div></div>
+
+<div class="dg-mobile-menu" id="mobile-menu" hidden>
+  <div class="dg-mobile-menu__bar">
+    <button class="dg-btn dg-btn--icon" data-dg-menu-close aria-label="Close menu" style="margin-left:-10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" style="width:22px;height:22px"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="dg-nav__logo"><img src="../dist/assets/logo/logo-color-dark.svg" alt="Draco Genesis"></span>
+  </div>
+  <nav aria-label="Main mobile">
+    <button class="dg-mobile-menu__row" data-dg-toggle aria-expanded="true" aria-controls="mm-proxies">Buy Proxies<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="dg-mobile-menu__sub" id="mm-proxies"><a href="#">All proxies</a><a href="#">Land Essentials Pack</a><a href="#">Game Changers Pack</a></div>
+    <a class="dg-mobile-menu__row" href="#">Event Tools</a>
+    <a class="dg-mobile-menu__row" href="#">Booster Pack Guide</a>
+  </nav>
+  <div class="dg-mobile-menu__foot"><a class="dg-btn dg-btn--primary dg-btn--hero" href="#">Shop proxies</a><span class="dg-caption" style="text-align:center">Playtest proxies · not tournament legal</span></div>
+</div>
+
+<main id="main">
+<section class="dg-tx dg-tx--sweep" style="--dg-tile:400px;border-bottom:1px solid var(--dg-border)">
+  <div class="dg-container dg-section dg-stack">
+    <span class="dg-eyebrow">@dracogenesis/design · v1.0.0</span>
+    <h1 style="max-width:720px">Every component, live from the package.</h1>
+    <p class="dg-body-lg" style="max-width:560px">This page uses nothing but <code class="dg-mono">dist/dg.css</code> and <code class="dg-mono">dist/dg.js</code>. If it looks wrong here, fix it in the package — never in a page.</p>
+    <div class="dg-cluster" style="margin-top:var(--dg-space-4)"><a class="dg-btn dg-btn--primary dg-btn--hero" href="#buttons">Hero CTA</a><a class="dg-btn dg-btn--secondary" style="height:56px;padding:0 24px" href="#cards">Jump to cards</a></div>
+  </div>
+</section>
+
+<div class="dg-container">
+
+<section class="dg-section">
+  <div class="dg-section-header">
+    <div class="dg-section-header__title"><span class="dg-eyebrow">01 — Color</span><h2>Palette &amp; semantic tokens</h2></div>
+    <p class="dg-section-header__deck">Use semantic tokens (<span class="dg-mono">--dg-surface</span>, <span class="dg-mono">--dg-accent</span>) in product code. Primitives exist for the rare exception.</p>
+  </div>
+  <div class="dg-grid" style="--dg-grid-min:140px">
+    <div class="demo-swatch"><i style="background:var(--dg-accent)"></i><span class="demo-label">--dg-accent</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-bg)"></i><span class="demo-label">--dg-bg</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-surface)"></i><span class="demo-label">--dg-surface</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-surface-raised)"></i><span class="demo-label">--dg-surface-raised</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-surface-overlay)"></i><span class="demo-label">--dg-surface-overlay</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-text)"></i><span class="demo-label">--dg-text</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-info)"></i><span class="demo-label">--dg-info · Aether</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-warning)"></i><span class="demo-label">--dg-warning · Gold</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-success)"></i><span class="demo-label">--dg-success · Verdant</span></div>
+    <div class="demo-swatch"><i style="background:var(--dg-danger)"></i><span class="demo-label">--dg-danger · Bloodroot</span></div>
+  </div>
+</section>
+
+<section class="dg-section">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">02 — Type</span><h2>Typography</h2></div></div>
+  <div class="dg-stack dg-stack--6">
+    <div class="dg-display-xl">Genesis</div>
+    <h1>The Wyrm Wakes</h1>
+    <h2>Player Tools</h2>
+    <h3>Hypergeometric Calculator</h3>
+    <h4>Deck parameters</h4>
+    <h5>Draws remaining</h5>
+    <span class="dg-eyebrow">New this week</span>
+    <p class="dg-body-lg">Shuffle a four-player pod, assign seats, and roll for first — in one tap.</p>
+    <p class="dg-prose">Results assume a 99-card singleton library and no mulligans.</p>
+    <p class="dg-small dg-text-muted">Prices refresh every 24 hours · Updated 2 h ago</p>
+    <p class="dg-data" style="font-size:24px">P(X ≥ 1) = 0.2577</p>
+    <p class="dg-lore">“Every legend starts as a sixty-card pile and a bad idea.”</p>
+  </div>
+</section>
+
+<section class="dg-section" id="buttons">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">03 — Actions</span><h2>Buttons</h2></div><p class="dg-section-header__deck">One hero CTA per page. Primary is rightmost on desktop and stacks first on mobile.</p></div>
+  <div class="dg-stack dg-stack--6">
+    <div class="demo-row"><button class="dg-btn dg-btn--primary">Shuffle pod</button><button class="dg-btn dg-btn--secondary">Save deck</button><button class="dg-btn dg-btn--ghost">View details</button><button class="dg-btn dg-btn--danger">Delete deck</button></div>
+    <div class="demo-row"><button class="dg-btn dg-btn--primary" disabled>Shuffle pod</button><button class="dg-btn dg-btn--secondary" disabled>Save deck</button><button class="dg-btn dg-btn--ghost" disabled>View details</button><button class="dg-btn dg-btn--danger" disabled>Delete deck</button><button class="dg-btn dg-btn--primary" aria-busy="true"><span class="dg-spinner" aria-hidden="true"></span>Shuffling</button></div>
+    <div class="demo-row"><a class="dg-btn dg-btn--primary dg-btn--hero" href="#">Order proxies</a><button class="dg-btn dg-btn--primary dg-btn--sm">Add</button><button class="dg-btn dg-btn--secondary dg-btn--icon" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.2 6.5l2.2 1.6M17.6 15.9l2.2 1.6M4.2 17.5l2.2-1.6M17.6 8.1l2.2-1.6"/></svg></button></div>
+    <div class="dg-surface" style="padding:var(--dg-space-6)"><span class="demo-label">.dg-actions — resize below 768px</span><div class="dg-actions" style="margin-top:var(--dg-space-4)"><button class="dg-btn dg-btn--secondary">Cancel</button><button class="dg-btn dg-btn--primary">Save settings</button></div></div>
+  </div>
+</section>
+
+<section class="dg-section">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">04 — Input</span><h2>Forms</h2></div><p class="dg-section-header__deck">Helper and error text sit between the label and the field.</p></div>
+  <div class="dg-grid dg-grid--2" style="align-items:start">
+    <form class="dg-form dg-surface" style="padding:var(--dg-space-6)" onsubmit="event.preventDefault();DG.toast('Deck saved',{action:'Undo'})">
+      <div class="dg-field"><div class="dg-field__head"><label class="dg-label" for="f1">Deck size</label><span class="dg-help">Commander decks are 99 + commander.</span></div><input class="dg-input" id="f1" value="99"></div>
+      <div class="dg-field"><div class="dg-field__head"><label class="dg-label" for="f2">Cards drawn</label><span class="dg-error" id="f2e">Can’t exceed deck size (99).</span></div><input class="dg-input" id="f2" value="120" aria-invalid="true" aria-describedby="f2e"></div>
+      <div class="dg-field"><div class="dg-field__head"><label class="dg-label" for="f3">Format</label><span class="dg-help">Changes the deck-size default.</span></div><select class="dg-select" id="f3"><option>Commander</option><option>Modern</option><option>Pauper</option></select></div>
+      <div class="dg-field"><label class="dg-label" for="f4">Search cards</label><div class="dg-input-group"><svg class="dg-input-group__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input class="dg-input" id="f4" placeholder="Card name, type or text"><span class="dg-input-group__end"><span class="dg-kbd">⌘K</span></span></div></div>
+      <div class="dg-field"><div class="dg-field__head"><label class="dg-label" for="f5">Players</label><span class="dg-help">One per line.</span></div><textarea class="dg-textarea" id="f5" placeholder="Avery&#10;Blake&#10;Casey"></textarea></div>
+      <div class="dg-actions"><button type="button" class="dg-btn dg-btn--secondary">Cancel</button><button class="dg-btn dg-btn--primary">Save deck</button></div>
+    </form>
+    <div class="dg-surface dg-stack dg-stack--6" style="padding:var(--dg-space-6)">
+      <div class="dg-field"><span class="dg-label" id="stp">Lands in deck</span><div class="dg-stepper" role="group" aria-labelledby="stp"><button type="button" data-dg-step="-1" aria-label="Decrease">−</button><input type="number" value="36" min="0" max="99" aria-labelledby="stp"><button type="button" data-dg-step="1" aria-label="Increase">+</button></div></div>
+      <div class="dg-stack dg-stack--3">
+        <label class="dg-check"><input type="checkbox" checked> On the draw</label>
+        <label class="dg-check"><input type="checkbox"> Free mulligan</label>
+        <label class="dg-check"><input type="radio" name="r" checked> Exactly</label>
+        <label class="dg-check"><input type="radio" name="r"> At least</label>
+        <label class="dg-switch"><input type="checkbox" role="switch" checked> Show percentages</label>
+        <label class="dg-switch"><input type="checkbox" role="switch"> Dark table mode</label>
+      </div>
+      <fieldset class="dg-field"><div class="dg-field__head"><legend>Uneven pod handling</legend><span class="dg-help">How leftover players are seated.</span></div>
+        <div class="dg-option-group">
+          <label class="dg-option"><span class="dg-check"><input type="radio" name="pods" checked></span><span class="dg-check__text"><span>Fewest players in uneven pods</span><span class="dg-help">13 players → 4·4·5</span></span></label>
+          <label class="dg-option"><span class="dg-check"><input type="radio" name="pods"></span><span class="dg-check__text"><span>Prefer 3-player pods</span><span class="dg-help">13 players → 4·3·3·3</span></span></label>
+        </div>
+      </fieldset>
+      <div class="dg-field"><span class="dg-label">Pod size</span><div class="dg-segmented" role="group" aria-label="Pod size"><button aria-pressed="false">3</button><button aria-pressed="true">4 players</button><button aria-pressed="false">5</button></div></div>
+      <div class="dg-field"><label class="dg-label" for="rng">Lands in deck</label><input class="dg-range" id="rng" type="range" min="30" max="42" value="37"></div>
+    </div>
+  </div>
+</section>
+
+<section class="dg-section">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">05 — Labels</span><h2>Badges, tags, tabs</h2></div></div>
+  <div class="dg-stack dg-stack--6">
+    <div class="demo-row"><span class="dg-badge dg-badge--proxy">Proxy</span><span class="dg-badge dg-badge--premium">Foil finish</span><span class="dg-badge dg-badge--success">In stock</span><span class="dg-badge dg-badge--info">New tool</span><span class="dg-badge dg-badge--danger">Sold out</span><span class="dg-badge dg-badge--neutral">Commander</span></div>
+    <div class="dg-tag-list"><span class="dg-tag">Ramp<button class="dg-tag__remove" aria-label="Remove Ramp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span><button class="dg-tag" aria-pressed="true">Removal ✓</button><button class="dg-tag dg-tag--add">+ Add tag</button></div>
+    <div>
+      <div class="dg-tabs" role="tablist" aria-label="Deck views"><button class="dg-tab" role="tab" aria-selected="true" aria-controls="tp1" id="t1">Overview</button><button class="dg-tab" role="tab" aria-selected="false" aria-controls="tp2" id="t2">Curve</button><button class="dg-tab" role="tab" aria-selected="false" aria-controls="tp3" id="t3">Probabilities</button></div>
+      <div class="dg-tabpanel" role="tabpanel" id="tp1" aria-labelledby="t1" style="padding-top:var(--dg-space-4)">Overview panel.</div>
+      <div class="dg-tabpanel" role="tabpanel" id="tp2" aria-labelledby="t2" style="padding-top:var(--dg-space-4)" hidden>Curve panel.</div>
+      <div class="dg-tabpanel" role="tabpanel" id="tp3" aria-labelledby="t3" style="padding-top:var(--dg-space-4)" hidden>Probabilities panel.</div>
+    </div>
+    <div class="dg-tooltip-wrap" style="width:fit-content;margin-top:48px"><button class="dg-btn dg-btn--secondary" aria-describedby="tt1">Hover me</button><span class="dg-tooltip" role="tooltip" id="tt1">Hypergeometric: drawing without replacement from a finite deck.</span></div>
+    <ol class="dg-breadcrumb"><li><a href="#">Proxies</a></li><li><span aria-current="page">Custom Commander Deck</span></li></ol>
+  </div>
+</section>
+
+<section class="dg-section" id="cards">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">06 — Surfaces</span><h2>Cards</h2></div><p class="dg-section-header__deck">Pick by content, never by decoration.</p></div>
+  <div class="dg-grid dg-grid--3">
+    <div class="dg-card"><span class="dg-card__label">Surface card</span><p class="dg-card__text">Static content grouped on a surface. No hover, no link.</p></div>
+    <div class="dg-card dg-card--accent"><span class="dg-card__label">Pillar 2 · DG Tools</span><h3 class="dg-card__title">Player Tools</h3><p class="dg-card__text">One of a set of peers; the tick marks the group, not a state.</p></div>
+    <a class="dg-card dg-card--tool" href="#"><span class="dg-icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h3.5c2 0 3.2 1 4.3 2.8l2.4 4.4C14.3 15 15.5 18 17.5 18H21M18 15l3 3-3 3M3 18h3.5c1.4 0 2.4-.6 3.2-1.6M18 3l3 3-3 3M21 6h-3.5c-1.4 0-2.4.6-3.2 1.6"/></svg></span><h3 class="dg-card__title">Pod Shuffler</h3><p class="dg-card__text">Split a room into fair pods and seat every player.</p><span class="dg-card__cta">Open tool →</span></a>
+    <div class="dg-card dg-card--stat"><span class="dg-card__label">Result</span><div class="dg-stat__value">25.8<span class="dg-stat__unit">%</span></div><p class="dg-card__text">At least 1 of 4 copies in your opening 7 (99-card deck).</p><div class="dg-meter" style="--dg-meter:25.8%"><span></span></div></div>
+    <div class="dg-card dg-card--accent"><span class="dg-card__step">01</span><h3 class="dg-card__title">Choose a pack or send a list</h3><p class="dg-card__text">Pick a curated staple pack, or paste your Moxfield decklist.</p></div>
+    <div class="dg-grid dg-grid--2" style="--dg-grid-gap:12px"><div class="dg-stat-tile"><span class="dg-stat-tile__label">Queued</span><span class="dg-stat-tile__value">14</span></div><div class="dg-stat-tile"><span class="dg-stat-tile__label">Ready</span><span class="dg-stat-tile__value dg-stat-tile__value--success">11</span></div><div class="dg-stat-tile"><span class="dg-stat-tile__label">Missing art</span><span class="dg-stat-tile__value dg-stat-tile__value--warning">2</span></div><div class="dg-stat-tile"><span class="dg-stat-tile__label">Errors</span><span class="dg-stat-tile__value dg-stat-tile__value--danger">1</span></div></div>
+  </div>
+  <div class="dg-grid" style="--dg-grid-min:440px;margin-top:var(--dg-gutter)">
+    <a class="dg-card dg-card--product" href="#">
+      <div class="dg-ember-floor dg-fan-stage"><div class="dg-fan"><img src="../dist/assets/cards/card-back.webp" alt=""><img src="../dist/assets/cards/card-back.webp" alt=""><img src="../dist/assets/cards/card-back.webp" alt=""></div></div>
+      <div class="dg-card__body"><div class="dg-cluster" style="--dg-cluster-gap:8px"><span class="dg-badge dg-badge--proxy dg-badge--sm">Staple pack</span></div><h3 class="dg-card__title">Land Essentials Pack</h3><p class="dg-card__text">Duals, fetches, shocks, bond lands, triomes and other high-power staples.</p><div class="dg-card__foot"><div class="dg-stack dg-stack--1"><span class="dg-price">$50.00</span><span class="dg-price__note">Est. card value $6,993.24</span></div><span class="dg-btn dg-btn--secondary">Learn more</span></div></div>
+    </a>
+    <a class="dg-card dg-card--product" href="#">
+      <div class="dg-ember-floor dg-fan-stage"><div class="dg-fan"><img src="../dist/assets/cards/card-back.webp" alt=""><img src="../dist/assets/cards/card-back.webp" alt=""><img src="../dist/assets/cards/card-back.webp" alt=""><img src="../dist/assets/cards/card-back.webp" alt=""><img src="../dist/assets/cards/card-back.webp" alt=""></div></div>
+      <div class="dg-card__body"><div class="dg-cluster" style="--dg-cluster-gap:8px"><span class="dg-badge dg-badge--proxy dg-badge--sm">Staple pack</span></div><h3 class="dg-card__title">Game Changers Pack</h3><p class="dg-card__text">Built from the official Game Changers list — playtest the format’s priciest staples.</p><div class="dg-card__foot"><div class="dg-stack dg-stack--1"><span class="dg-price">$50.00</span><span class="dg-price__note">Est. card value $13,936.64</span></div><span class="dg-btn dg-btn--secondary">Learn more</span></div></div>
+    </a>
+  </div>
+</section>
+
+<section class="dg-section">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">07 — Feedback</span><h2>Callouts, alerts, table</h2></div></div>
+  <div class="dg-grid dg-grid--2" style="align-items:start">
+    <div class="dg-stack">
+      <div class="dg-callout dg-callout--ember"><span class="dg-callout__label">Non-negotiable · Proxy ethics</span><p>A rule the brand never breaks.</p></div>
+      <div class="dg-callout dg-callout--gold"><span class="dg-callout__label">Open decision</span><p>Something awaiting a call from the brand owner.</p></div>
+      <ul class="dg-legend dg-surface" role="list" style="padding:22px"><li><span class="dg-marker">1</span><span><b>Name bar</b> — card name, left-aligned.</span></li><li><span class="dg-marker">2</span><span><b>Mana cost</b> — top right.</span></li></ul>
+    </div>
+    <div class="dg-stack dg-stack--3">
+      <div class="dg-alert dg-alert--success" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><span><b>Deck saved.</b> 100 cards, 0 warnings.</span></div>
+      <div class="dg-alert dg-alert--warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l9 16H3z"/><path d="M12 10v4M12 17v.01"/></svg><span><b>Prices are 3 days old.</b> Refresh before quoting.</span></div>
+      <div class="dg-alert dg-alert--danger" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><span><b>Couldn’t read that list.</b> Line 14 has no card count.</span></div>
+      <div class="dg-alert dg-alert--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span><b>Tip.</b> Paste a list straight from Moxfield or Archidekt.</span></div>
+      <div class="dg-cluster"><button class="dg-btn dg-btn--secondary" onclick="DG.toast('Pod shuffled · Seat 1 goes first',{action:'Undo'})">Show toast</button><button class="dg-btn dg-btn--danger" data-dg-modal-open="del">Open modal</button></div>
+    </div>
+  </div>
+  <div class="dg-surface" style="padding:var(--dg-space-6);margin-top:var(--dg-gutter)">
+    <div class="dg-table-wrap"><table class="dg-table"><thead><tr><th>Card</th><th>Set</th><th class="dg-num">Qty</th><th class="dg-num">Est. price</th><th class="dg-num">7-day</th></tr></thead>
+    <tbody><tr><td>Sol Ring</td><td class="dg-code">C21</td><td class="dg-num">1</td><td class="dg-num">$1.20</td><td class="dg-num dg-delta--up">▲ 4%</td></tr><tr><td>Arcane Signet</td><td class="dg-code">M3C</td><td class="dg-num">1</td><td class="dg-num">$0.80</td><td class="dg-num dg-delta--down">▼ 2%</td></tr><tr><td>Command Tower</td><td class="dg-code">C21</td><td class="dg-num">1</td><td class="dg-num">$0.25</td><td class="dg-num dg-delta--flat">— 0%</td></tr></tbody>
+    <tfoot><tr><td>Total</td><td></td><td class="dg-num">3</td><td class="dg-num">$2.25</td><td></td></tr></tfoot></table></div>
+    <p class="dg-table-meta">Demo values · source and timestamp always shown in production</p>
+  </div>
+</section>
+
+<section class="dg-section">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">08 — Atmosphere</span><h2>Texture treatments</h2></div><p class="dg-section-header__deck">The scale tile is never shown raw. Max 20% of a layout; never behind body text.</p></div>
+  <div class="dg-grid dg-grid--3">
+    <div class="dg-tx dg-tx--scrim" style="height:160px;border-radius:var(--dg-radius-md);padding:16px"><span class="demo-label" style="color:var(--dg-obsidian-200)">Obsidian Scrim</span></div>
+    <div class="dg-tx dg-tx--glow" style="height:160px;border-radius:var(--dg-radius-md);padding:16px"><span class="demo-label" style="color:var(--dg-obsidian-200)">Ember Glow</span></div>
+    <div class="dg-tx dg-tx--sweep" style="height:160px;border-radius:var(--dg-radius-md);padding:16px"><span class="demo-label" style="color:var(--dg-obsidian-200)">Forge Sweep</span></div>
+    <div class="dg-tx dg-tx--spotlight" style="height:160px;border-radius:var(--dg-radius-md);padding:16px"><span class="demo-label" style="color:var(--dg-obsidian-200)">Spotlight</span></div>
+    <div class="dg-tx dg-tx--smolder" style="height:160px;border-radius:var(--dg-radius-md);padding:16px"><span class="demo-label" style="color:var(--dg-obsidian-200)">Smolder</span></div>
+    <div class="dg-tx dg-tx--band" style="height:48px;align-self:center;display:flex;align-items:center;justify-content:center"><span class="demo-label" style="color:var(--dg-obsidian-200)">Ember Band</span></div>
+  </div>
+  <div class="dg-atmos dg-cta-panel" style="margin-top:var(--dg-gutter)">
+    <span class="dg-atmos__corona" aria-hidden="true"></span><img class="dg-atmos__wyrm" src="../dist/assets/icon/icon-mono-parchment.svg" alt="" aria-hidden="true">
+    <div class="dg-cta-panel__copy"><span class="dg-eyebrow">Atmospheric</span><h2>Have something in mind that doesn’t exist yet?</h2><p class="dg-text-secondary">Corona + Wyrm watermark — no texture.</p></div>
+    <a class="dg-btn dg-btn--secondary" href="#">Request a quote</a>
+  </div>
+</section>
+
+<section class="dg-section">
+  <div class="dg-section-header"><div class="dg-section-header__title"><span class="dg-eyebrow">09 — Tools</span><h2>Empty state, life tile, sidebar</h2></div></div>
+  <div class="dg-grid dg-grid--3" style="align-items:stretch">
+    <div class="dg-surface dg-empty"><img class="dg-empty__mark" src="../dist/assets/icon/icon-mono-parchment.svg" alt=""><h3 class="dg-empty__title">No decks yet</h3><p class="dg-empty__text">Paste a list or start from a commander.</p><button class="dg-btn dg-btn--primary">New deck</button></div>
+    <div class="dg-life"><span class="dg-life__seat">Seat 1 · Draco</span><span class="dg-life__total">38</span><div class="dg-life__controls"><button aria-label="Lose 1 life">−</button><button aria-label="Gain 1 life">+</button></div><span class="dg-life__meta">CMD 0 · 0 · 7 · POISON 0</span></div>
+    <nav class="dg-sidebar dg-surface" aria-label="Forge example" style="width:auto;border-radius:var(--dg-radius-sm)">
+      <a class="dg-sidebar__item" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><rect x="6" y="3" width="12" height="16" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h9"/></svg>Decks<span class="dg-sidebar__count">24</span></a>
+      <a class="dg-sidebar__item" href="#" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Proxy queue<span class="dg-sidebar__count">14</span></a>
+      <a class="dg-sidebar__item" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M7 8V3.5h10V8M7 17H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M7 14h10v6.5H7z"/></svg>Print sheets</a>
+    </nav>
+  </div>
+</section>
+
+</div>
+</main>
+
+<dialog class="dg-modal dg-modal--sm dg-modal--alert" id="del" aria-labelledby="del-t">
+  <div class="dg-modal__head"><h2 class="dg-modal__title" id="del-t" style="font-family:var(--dg-font-sans)">Delete “Atraxa Superfriends”?</h2></div>
+  <div class="dg-modal__body"><p>Removes the deck and its 3 proxy layouts. This can’t be undone.</p></div>
+  <form method="dialog" class="dg-modal__foot"><button class="dg-btn dg-btn--secondary" value="cancel">Cancel</button><button class="dg-btn dg-btn--danger-solid" value="delete">Delete</button></form>
+</dialog>
+
+<footer class="dg-footer">
+  <div class="dg-container dg-footer__inner">
+    <div class="dg-footer__cols">
+      <div class="dg-footer__brand"><img src="../dist/assets/logo/logo-color-dark.svg" alt="Draco Genesis"><p class="dg-footer__disclaimer">Draco Genesis proxies are playtest pieces, not legal tournament cards. Not affiliated with or endorsed by Wizards of the Coast.</p></div>
+      <div class="dg-footer__col"><span class="dg-footer__heading">Buy proxies</span><a href="#">Land Essentials Pack</a><a href="#">Game Changers Pack</a></div>
+      <div class="dg-footer__col"><span class="dg-footer__heading">Event tools</span><a href="#">Pod Shuffler</a><a href="#">cEDH Tournament</a></div>
+      <div class="dg-footer__col"><span class="dg-footer__heading">Shop</span><a href="#">Cart</a></div>
+    </div>
+    <div class="dg-footer__legal">© 2026 Draco Genesis. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var p = document.documentElement.getAttribute('data-theme') === 'parchment';
+    document.documentElement.setAttribute('data-theme', p ? 'dark' : 'parchment');
+    this.textContent = p ? 'Parchment' : 'Dark';
+  });
+  document.querySelectorAll('.dg-segmented').forEach(function (g) {
+    g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; g.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); });
+  });
+</script>
+</body>
+</html>

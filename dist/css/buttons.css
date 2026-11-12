@@ -1,0 +1,63 @@
+/*! @dracogenesis/design v1.0.0 · generated — edit tokens/ or src/, not dist/ */
+/* Buttons — primary, secondary, ghost, destructive; sizes S 36 / M 44 / Hero 56 (Scale Notch).
+   One hero CTA per page. Primary sits rightmost on desktop; full width and stacked first on mobile.
+   Ember buttons always carry Obsidian text (white on Ember 500 fails contrast). */
+
+.dg-btn {
+  --_bg: transparent; --_fg: var(--dg-text); --_bd: transparent;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--dg-space-2);
+  height: var(--dg-control-height); padding: 0 var(--dg-space-5);
+  border: 1px solid var(--_bd); border-radius: var(--dg-radius-sm);
+  background: var(--_bg); color: var(--_fg);
+  font: 600 15px/1 var(--dg-font-sans); white-space: nowrap; text-decoration: none;
+  cursor: pointer; user-select: none;
+  transition: background-color var(--dg-duration-fast) var(--dg-ease-forge), border-color var(--dg-duration-fast) var(--dg-ease-forge), color var(--dg-duration-fast) var(--dg-ease-forge);
+}
+.dg-btn:hover { color: var(--_fg); }
+.dg-btn:focus-visible { outline: 2px solid var(--dg-focus); outline-offset: 3px; }
+.dg-btn svg { flex: none; width: 18px; height: 18px; }
+
+.dg-btn--primary { --_bg: var(--dg-accent); --_fg: var(--dg-on-accent); }
+.dg-btn--primary:hover { --_bg: var(--dg-accent-hover); }
+
+.dg-btn--secondary { --_bd: var(--dg-border-control); }
+.dg-btn--secondary:hover { --_bg: var(--dg-surface-raised); --_bd: var(--dg-text-disabled); }
+
+.dg-btn--ghost { --_fg: var(--dg-accent-text); }
+.dg-btn--ghost:hover { --_bg: var(--dg-accent-wash); }
+
+.dg-btn--danger { --_fg: var(--dg-danger); --_bd: var(--dg-danger); }
+.dg-btn--danger:hover { --_bg: var(--dg-danger-wash); }
+.dg-btn--danger:focus-visible { outline-color: var(--dg-danger); }
+.dg-btn--danger-solid { --_bg: var(--dg-danger); --_fg: var(--dg-obsidian-950); --_bd: var(--dg-danger); }
+
+.dg-btn:disabled, .dg-btn[aria-disabled="true"] { cursor: not-allowed; --_fg: var(--dg-text-disabled); }
+.dg-btn--primary:disabled, .dg-btn--primary[aria-disabled="true"] { --_bg: var(--dg-surface-overlay); }
+.dg-btn--secondary:disabled, .dg-btn--danger:disabled { --_bd: var(--dg-border-strong); --_bg: transparent; }
+.dg-btn--ghost:disabled { --_bg: transparent; }
+
+/* Loading: add aria-busy="true" and put .dg-spinner first inside */
+.dg-btn[aria-busy="true"] { cursor: progress; }
+.dg-spinner { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; opacity: .9; animation: dg-spin .8s linear infinite; flex: none; }
+@keyframes dg-spin { to { transform: rotate(360deg); } }
+
+.dg-btn--sm { height: var(--dg-control-height-sm); padding: 0 var(--dg-space-3) 0; font-size: 14px; }
+.dg-btn--icon { width: var(--dg-control-height); padding: 0; }
+.dg-btn--icon.dg-btn--sm { width: var(--dg-control-height-sm); }
+.dg-btn--block { width: 100%; }
+@media (max-width: 767.98px) { .dg-btn--block-sm { width: 100%; } }
+
+/* Hero CTA — the only Scale Notch button. Once per page. */
+.dg-btn--hero {
+  height: var(--dg-control-height-lg); padding: 0 var(--dg-space-8);
+  font-size: 17px; border-radius: 0;
+  clip-path: polygon(0 0, calc(100% - var(--dg-notch-md)) 0, 100% var(--dg-notch-md), 100% 100%, 0 100%);
+}
+
+/* Action row: tertiary/secondary first, primary last (rightmost). Stacks on mobile with primary on top. */
+.dg-actions { display: flex; justify-content: flex-end; align-items: center; gap: var(--dg-space-3); }
+.dg-actions--start { justify-content: flex-start; }
+@media (max-width: 767.98px) {
+  .dg-actions:not(.dg-actions--inline) { flex-direction: column-reverse; align-items: stretch; }
+  .dg-actions:not(.dg-actions--inline) > .dg-btn { width: 100%; }
+}

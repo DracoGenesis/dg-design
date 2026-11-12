@@ -1,0 +1,86 @@
+/*! @dracogenesis/design v1.0.0 · generated — edit tokens/ or src/, not dist/ */
+/* Feedback & overlays — callouts, annotation markers, alerts, toast, data table, modal, empty state, life tile. */
+
+/* ---- Callouts: max one per section ---- */
+.dg-callout { display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: var(--dg-radius-md); color: var(--dg-text-label); font-size: 14px; line-height: 1.6; }
+.dg-callout__label { font: 500 11px/1 var(--dg-font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.dg-callout--ember { background: var(--dg-accent-wash); border: 1px solid #4A1A10; }
+.dg-callout--ember .dg-callout__label { color: var(--dg-ember-300); }
+.dg-callout--gold { background: #1B140B; border: 1px solid #5A4318; }
+.dg-callout--gold .dg-callout__label { color: var(--dg-gold); font: 600 12px/1 var(--dg-font-sans); letter-spacing: .2em; }
+[data-theme="parchment"] .dg-callout--ember { border-color: var(--dg-ember-200); }
+[data-theme="parchment"] .dg-callout--ember .dg-callout__label { color: var(--dg-ember-700); }
+[data-theme="parchment"] .dg-callout--gold { background: #FBF1DD; border-color: #E5C98E; }
+[data-theme="parchment"] .dg-callout--gold .dg-callout__label { color: var(--dg-warning); }
+
+/* ---- Annotation marker ---- */
+.dg-marker { display: inline-block; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--dg-accent); color: var(--dg-on-accent); font: 700 11px/22px var(--dg-font-mono); text-align: center; }
+.dg-legend { display: flex; flex-direction: column; gap: var(--dg-space-3); }
+.dg-legend > li, .dg-legend > div { display: flex; align-items: flex-start; gap: 10px; color: var(--dg-text-secondary); font-size: 14px; line-height: 1.6; }
+
+/* ---- Alerts: always icon + color (Bloodroot sits near Ember in hue) ---- */
+.dg-alert { --_c: var(--dg-info); display: flex; gap: var(--dg-space-3); align-items: flex-start; padding: 14px 16px; border-radius: var(--dg-radius-alert); background: color-mix(in srgb, var(--_c) 8%, transparent); border: 1px solid color-mix(in srgb, var(--_c) 35%, transparent); color: var(--dg-text-label); font: 400 14px/1.5 var(--dg-font-sans); }
+.dg-alert > svg { flex: none; width: 18px; height: 18px; margin-top: 2px; color: var(--_c); }
+.dg-alert b, .dg-alert strong { color: var(--dg-text); }
+.dg-alert--success { --_c: var(--dg-success); }
+.dg-alert--warning { --_c: var(--dg-warning); }
+.dg-alert--danger { --_c: var(--dg-danger); }
+.dg-alert--info { --_c: var(--dg-info); }
+
+/* ---- Toast: bottom-right desktop, bottom-center mobile · 5s · pauses on hover ---- */
+.dg-toast-region { position: fixed; right: var(--dg-space-6); bottom: var(--dg-space-6); z-index: var(--dg-z-toast); display: flex; flex-direction: column; gap: var(--dg-space-2); width: min(380px, calc(100vw - 2 * var(--dg-margin))); pointer-events: none; }
+@media (max-width: 767.98px) { .dg-toast-region { right: 50%; transform: translateX(50%); bottom: var(--dg-space-4); } }
+.dg-toast { display: flex; align-items: center; gap: var(--dg-space-3); padding: 12px 14px; background: var(--dg-surface-overlay); border: 1px solid var(--dg-border-control); border-radius: var(--dg-radius-alert); box-shadow: var(--dg-shadow-e2); font: 400 14px/1.4 var(--dg-font-sans); color: var(--dg-text); pointer-events: auto; animation: dg-toast-in var(--dg-duration-slow) var(--dg-ease-forge); }
+.dg-toast__msg { flex: 1; }
+.dg-toast .dg-btn { height: 32px; padding: 0 10px; font-size: 13px; }
+@keyframes dg-toast-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---- Data table: Mono right-aligned numbers, deltas pair color with ▲▼ ---- */
+.dg-table-wrap { overflow-x: auto; }
+.dg-table { width: 100%; border-collapse: collapse; }
+.dg-table th { padding: 10px 14px; border-bottom: 1px solid var(--dg-border-control); font: 600 11px/1 var(--dg-font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--dg-text-muted); text-align: left; white-space: nowrap; }
+.dg-table td { padding: 12px 14px; border-bottom: 1px solid var(--dg-border); font: 400 14px/1.4 var(--dg-font-sans); color: var(--dg-text-label); }
+.dg-table tbody tr:hover { background: var(--dg-surface-raised); }
+.dg-table tfoot td { border-bottom: 0; font-weight: 600; color: var(--dg-text); }
+.dg-table .dg-num { font-family: var(--dg-font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+.dg-table .dg-code { font: 500 12px/1.5 var(--dg-font-mono); color: var(--dg-text-secondary); }
+.dg-delta--up, .dg-table .dg-delta--up { color: var(--dg-success); }
+.dg-delta--down, .dg-table .dg-delta--down { color: var(--dg-danger); }
+.dg-delta--flat, .dg-table .dg-delta--flat { color: var(--dg-text-muted); }
+.dg-table-meta { margin-top: var(--dg-space-3); font: 500 12px/1.5 var(--dg-font-mono); color: var(--dg-text-muted); }
+
+/* ---- Modal: <dialog class="dg-modal"> · e3 · Esc closes · focus trapped (native) ---- */
+.dg-modal { width: min(560px, calc(100vw - 2 * var(--dg-space-4))); max-height: calc(100dvh - 2 * var(--dg-space-6)); margin: auto; padding: 0; overflow: auto; background: var(--dg-surface-overlay); color: var(--dg-text); border: 1px solid var(--dg-border-control); border-radius: var(--dg-radius-lg); box-shadow: var(--dg-shadow-e3); }
+.dg-modal--sm { width: min(480px, calc(100vw - 2 * var(--dg-space-4))); }
+.dg-modal::backdrop { background: rgba(7,5,6,.72); }
+.dg-modal[open] { animation: dg-modal-in var(--dg-duration-slow) var(--dg-ease-forge); }
+@keyframes dg-modal-in { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+.dg-modal__head { display: flex; align-items: center; gap: var(--dg-space-3); padding: var(--dg-space-6) var(--dg-space-6) 0; }
+.dg-modal__title { display: flex; flex-direction: column; gap: 6px; font: 700 20px/1.3 var(--dg-font-sans); }
+.dg-modal__close { margin-left: auto; color: var(--dg-text-muted); }
+.dg-modal__body { display: flex; flex-direction: column; gap: var(--dg-space-8); padding: var(--dg-space-6); }
+.dg-modal__body > p { color: var(--dg-text-secondary); font-size: 15px; line-height: 1.6; }
+.dg-modal__foot { display: flex; justify-content: flex-end; gap: var(--dg-space-3); padding: var(--dg-space-4) var(--dg-space-6) var(--dg-space-6); border-top: 1px solid var(--dg-border-strong); }
+.dg-modal--alert .dg-modal__foot { border-top: 0; padding-top: 0; }
+@media (max-width: 767.98px) { .dg-modal__foot { flex-direction: column-reverse; } .dg-modal__foot .dg-btn { width: 100%; } }
+
+/* ---- Empty state: Wyrm at 35% ---- */
+.dg-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--dg-space-3); padding: var(--dg-space-8) var(--dg-space-4); text-align: center; }
+.dg-empty__mark { width: 52px; height: 52px; opacity: .35; }
+.dg-empty__title { font: 700 18px/1.3 var(--dg-font-sans); }
+.dg-empty__text { color: var(--dg-text-secondary); font-size: 14px; line-height: 1.6; max-width: 360px; }
+.dg-empty .dg-btn { margin-top: var(--dg-space-2); }
+
+/* ---- Life counter tile ---- */
+.dg-life { --_seat: var(--dg-ember-950); --_rule: var(--dg-ember-800); --_ink: var(--dg-ember-300);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 20px; border-radius: var(--dg-radius-tile); background: var(--_seat); border: 1px solid var(--_rule); }
+.dg-life__seat { font: 600 13px/1 var(--dg-font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--_ink); }
+.dg-life__total { font: 600 88px/1 var(--dg-font-mono); font-variant-numeric: tabular-nums; color: var(--dg-obsidian-100); }
+.dg-life__controls { display: flex; gap: var(--dg-space-3); }
+.dg-life__controls button { width: 64px; height: 44px; border: 0; border-radius: var(--dg-radius-sm); background: rgba(0,0,0,.35); color: var(--dg-obsidian-100); font-size: 22px; cursor: pointer; }
+.dg-life__meta { font: 500 11px/1.5 var(--dg-font-mono); color: var(--_ink); }
+.dg-life--aether { --_seat: #0B1D22; --_rule: #1F5664; --_ink: var(--dg-aether); }
+.dg-life--gold { --_seat: #1F170A; --_rule: #6B4E17; --_ink: var(--dg-gold); }
+.dg-life--verdant { --_seat: #0A1D14; --_rule: #1E5A3E; --_ink: var(--dg-verdant); }
+.dg-life--parchment { --_seat: #1F1B19; --_rule: #5C534F; --_ink: var(--dg-obsidian-200); }
+.dg-life--bloodroot { --_seat: #22090E; --_rule: #6E2232; --_ink: var(--dg-bloodroot); }

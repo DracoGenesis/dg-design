@@ -1,0 +1,71 @@
+/*! @dracogenesis/design v1.0.0 · generated — edit tokens/ or src/, not dist/ */
+/* Cards — pick by content, never by decoration.
+   Surface (static reading) · Accent (set of 3–4 peers, Ember tick) · Tool (whole card is a link)
+   Product (Scale Notch, Ember Floor) · Stat (one Mono number) · Stat tile (compact dashboards) · Step (numbered sequence) */
+
+.dg-surface { background: var(--dg-surface); border: 1px solid var(--dg-border); border-radius: var(--dg-radius-md); }
+.dg-raised { background: var(--dg-surface-raised); border: 1px solid var(--dg-border-strong); border-radius: var(--dg-radius-md); box-shadow: var(--dg-shadow-e1); }
+
+.dg-card { display: flex; flex-direction: column; gap: var(--dg-space-3); min-width: 0; padding: var(--dg-space-6); background: var(--dg-surface); border: 1px solid var(--dg-border); border-radius: var(--dg-radius-md); color: var(--dg-text); }
+.dg-card__label { font: 500 11px/1 var(--dg-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--dg-text-muted); }
+.dg-card__title { font: 700 18px/1.3 var(--dg-font-sans); color: var(--dg-text); }
+.dg-card__text { font-size: 14px; line-height: 1.6; color: var(--dg-text-secondary); }
+.dg-card__foot { margin-top: auto; padding-top: var(--dg-space-3); display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--dg-space-3); }
+
+/* Accent card: Surface + Ember tick inside the padding. For peers only. */
+.dg-card--accent::before { content: ""; display: block; width: 24px; height: 2px; background: var(--dg-accent); }
+
+/* Step card: accent card with a Mono step number */
+.dg-card__step { font: 500 12px/1.5 var(--dg-font-mono); color: var(--dg-accent-text); }
+
+/* Raised (e1) variants */
+.dg-card--raised, .dg-card--tool, .dg-card--stat { background: var(--dg-surface-raised); border-color: var(--dg-border-strong); box-shadow: var(--dg-shadow-e1); }
+
+/* Tool card: the whole card is the <a> */
+a.dg-card--tool, .dg-card--tool { text-decoration: none; transition: border-color var(--dg-duration-fast) var(--dg-ease-forge), transform var(--dg-duration-base) var(--dg-ease-forge); }
+.dg-card--tool:hover { border-color: var(--dg-text-disabled); color: var(--dg-text); }
+.dg-card--tool:focus-visible { outline-offset: 3px; }
+.dg-card__cta { font: 600 14px/1 var(--dg-font-sans); color: var(--dg-accent-text); }
+.dg-card--tool:hover .dg-card__cta { color: var(--dg-accent-text-hover); }
+.dg-icon-tile { flex: none; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--dg-radius-alert); background: var(--dg-accent-tint); color: var(--dg-accent-text); }
+.dg-icon-tile svg { width: 22px; height: 22px; }
+
+/* Product card: Scale Notch + Ember Floor visual */
+.dg-card--product { padding: 0; gap: 0; overflow: hidden; border-radius: 0; background: var(--dg-surface-raised); border-color: var(--dg-border-strong); box-shadow: var(--dg-shadow-e1); clip-path: polygon(0 0, calc(100% - var(--dg-notch-lg)) 0, 100% var(--dg-notch-lg), 100% 100%, 0 100%); text-decoration: none; }
+a.dg-card--product:hover { color: var(--dg-text); }
+.dg-card--product > .dg-card__body { flex: 1; display: flex; flex-direction: column; gap: var(--dg-space-3); padding: var(--dg-space-6); }
+.dg-card--product .dg-card__title { font-size: 20px; }
+.dg-price { font: 600 24px/1 var(--dg-font-mono); font-variant-numeric: tabular-nums; color: var(--dg-text); }
+.dg-price__note { font: 500 12px/1.5 var(--dg-font-mono); color: var(--dg-text-muted); }
+
+/* Ember Floor: product/hero visual backdrop */
+.dg-ember-floor { position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 125%, rgba(255,59,31,.4), rgba(255,59,31,0) 62%), var(--dg-surface-raised); border-bottom: 1px solid var(--dg-border); }
+
+/* Card fan — DG card backs/fronts fanned from the bottom of an Ember Floor.
+   <div class="dg-ember-floor dg-fan-stage"><div class="dg-fan" data-count="3"><img>…</div></div>; dg.js rotates them. */
+.dg-fan-stage { height: 300px; }
+.dg-fan { --dg-card-w: 210px; position: absolute; left: 50%; bottom: -44px; display: flex; align-items: flex-end; transform: translateX(-50%); }
+.dg-fan > img { flex: none; width: var(--dg-card-w); max-width: none; height: calc(var(--dg-card-w) * 88 / 63); border-radius: calc(var(--dg-card-w) * .052); box-shadow: 0 18px 40px rgba(0,0,0,.7); transform-origin: 50% 100%; margin: 0 calc(var(--dg-card-w) * var(--_overlap, -.3)); }
+.dg-fan[data-count="1"] { --dg-card-w: 230px; }
+.dg-fan[data-count="2"] > img { --_overlap: -.143; }
+.dg-fan[data-count="3"] > img { --_overlap: -.295; }
+.dg-fan[data-count="4"] > img { --_overlap: -.36; }
+.dg-fan[data-count="5"] > img { --_overlap: -.43; }
+@media (max-width: 767.98px) { .dg-fan-stage { height: 230px; } .dg-fan { --dg-card-w: 170px; } .dg-fan[data-count="1"] { --dg-card-w: 190px; } }
+
+/* Playing card image (proxy front/back) — 63×88 ratio, 4.75% radius */
+.dg-mtg-card { width: var(--dg-card-w, 220px); aspect-ratio: 63 / 88; height: auto; border-radius: 4.75% / 3.4%; box-shadow: 0 24px 50px rgba(0,0,0,.7); }
+
+/* Stat card: one Mono headline number + plain-words assumption */
+.dg-stat__value { font: 500 52px/1 var(--dg-font-mono); font-variant-numeric: tabular-nums; color: var(--dg-text); }
+.dg-stat__unit { font-size: .5em; color: var(--dg-text-muted); }
+.dg-meter { height: 10px; border-radius: 5px; background: var(--dg-border-strong); overflow: hidden; }
+.dg-meter > span { display: block; height: 100%; width: var(--dg-meter, 0%); background: var(--dg-accent); }
+
+/* Stat tile (compact, Forge dashboards): functional color only on the value */
+.dg-stat-tile { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; background: var(--dg-surface); border: 1px solid var(--dg-border); border-radius: var(--dg-radius-sm); }
+.dg-stat-tile__label { font: 500 11px/1.5 var(--dg-font-mono); color: var(--dg-text-muted); }
+.dg-stat-tile__value { font: 500 26px/1 var(--dg-font-mono); font-variant-numeric: tabular-nums; }
+.dg-stat-tile__value--success { color: var(--dg-success); }
+.dg-stat-tile__value--warning { color: var(--dg-warning); }
+.dg-stat-tile__value--danger { color: var(--dg-danger); }

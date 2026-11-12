@@ -1,0 +1,71 @@
+/*! @dracogenesis/design v1.0.0 · generated — edit tokens/ or src/, not dist/ */
+/* Base — reset, document defaults, type roles.
+   Rule: Cinzel for display/H1/H2 only, never below 24px, never on UI. Inter for everything a user parses. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--dg-bg);
+  color: var(--dg-text);
+  font-family: var(--dg-font-sans);
+  font-size: var(--dg-type-body-size);
+  line-height: var(--dg-type-body-line);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+img, svg, video, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+button, input, select, textarea { font: inherit; color: inherit; }
+h1, h2, h3, h4, h5, h6, p, figure, blockquote { margin: 0; }
+ul[role="list"], ol[role="list"] { list-style: none; margin: 0; padding: 0; }
+table { border-collapse: collapse; }
+
+a { color: var(--dg-accent-text); text-decoration: none; transition: color var(--dg-duration-fast) var(--dg-ease-forge); }
+a:hover { color: var(--dg-accent-text-hover); }
+
+:focus-visible { outline: 2px solid var(--dg-focus); outline-offset: 2px; }
+::selection { background: var(--dg-ember-800); color: var(--dg-obsidian-50); }
+
+/* ---- Type roles: element defaults + matching classes ---- */
+.dg-display-xl, .dg-h1, .dg-h2, .dg-h3, .dg-h4, .dg-h5, h1, h2, h3, h4, h5 { text-wrap: balance; }
+
+.dg-display-xl { font: var(--dg-type-display-xl-weight) var(--dg-type-display-xl-size)/var(--dg-type-display-xl-line) var(--dg-type-display-xl-family); letter-spacing: var(--dg-type-display-xl-tracking); }
+h1, .dg-h1 { font: var(--dg-type-h1-weight) var(--dg-type-h1-size)/var(--dg-type-h1-line) var(--dg-type-h1-family); }
+h2, .dg-h2 { font: var(--dg-type-h2-weight) var(--dg-type-h2-size)/var(--dg-type-h2-line) var(--dg-type-h2-family); }
+h3, .dg-h3 { font: var(--dg-type-h3-weight) var(--dg-type-h3-size)/var(--dg-type-h3-line) var(--dg-type-h3-family); letter-spacing: var(--dg-type-h3-tracking); }
+h4, .dg-h4 { font: var(--dg-type-h4-weight) var(--dg-type-h4-size)/var(--dg-type-h4-line) var(--dg-type-h4-family); }
+h5, .dg-h5 { font: var(--dg-type-h5-weight) var(--dg-type-h5-size)/var(--dg-type-h5-line) var(--dg-type-h5-family); }
+
+.dg-eyebrow {
+  display: inline-block;
+  font: var(--dg-type-eyebrow-weight) var(--dg-type-eyebrow-size)/1 var(--dg-type-eyebrow-family);
+  letter-spacing: var(--dg-type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--dg-accent-text);
+}
+.dg-body-lg { font-size: var(--dg-type-body-lg-size); line-height: var(--dg-type-body-lg-line); color: var(--dg-text-secondary); }
+.dg-body { font-size: var(--dg-type-body-size); line-height: var(--dg-type-body-line); }
+.dg-small { font-size: var(--dg-type-small-size); line-height: var(--dg-type-small-line); }
+.dg-caption { font-size: var(--dg-type-caption-size); line-height: var(--dg-type-caption-line); color: var(--dg-text-muted); }
+.dg-prose { max-width: var(--dg-prose-max); color: var(--dg-text-secondary); }
+.dg-prose > * + * { margin-top: var(--dg-space-4); }
+.dg-data, .dg-mono { font-family: var(--dg-font-mono); font-variant-numeric: tabular-nums; }
+.dg-lore { font: italic var(--dg-type-lore-weight) var(--dg-type-lore-size)/var(--dg-type-lore-line) var(--dg-font-lore); color: var(--dg-text-secondary); }
+.dg-text-muted { color: var(--dg-text-muted); }
+.dg-text-secondary { color: var(--dg-text-secondary); }
+.dg-text-accent { color: var(--dg-accent-text); }
+.dg-tnum { font-variant-numeric: tabular-nums; }
+
+/* Ember tick — straight, square-ended accent. Never on a rounded border. */
+.dg-tick { display: block; flex: none; width: 24px; height: 2px; background: var(--dg-accent); }
+.dg-tick--vertical { width: 2px; height: 16px; }
+
+.dg-sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.dg-skip-link { position: absolute; left: var(--dg-space-4); top: -100px; z-index: var(--dg-z-tooltip); padding: var(--dg-space-3) var(--dg-space-4); border-radius: var(--dg-radius-sm); background: var(--dg-accent); color: var(--dg-on-accent); font-weight: 600; }
+.dg-skip-link:focus { top: var(--dg-space-4); color: var(--dg-on-accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: var(--dg-duration-fast) !important; animation-iteration-count: 1 !important; transition-duration: var(--dg-duration-fast) !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,57 @@
+/*! @dracogenesis/design v1.0.0 · generated — edit tokens/ or src/, not dist/ */
+/* Badges (status pills), filter tags, tabs, tooltip.
+   Status pills: tint fill + 40% border + full-strength text, pill radius.
+   Filter tags: rectangular (6px) so they never read as status. */
+
+.dg-badge {
+  --_c: var(--dg-text-label);
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px;
+  border-radius: var(--dg-radius-pill); white-space: nowrap;
+  font: 600 12px/1 var(--dg-font-sans); color: var(--_c);
+  background: color-mix(in srgb, var(--_c) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--_c) 40%, transparent);
+}
+.dg-badge--sm { height: auto; padding: 6px 10px; font-size: 11px; }
+.dg-badge--neutral { --_c: var(--dg-text-label); background: var(--dg-surface-overlay); border-color: var(--dg-border-control); }
+.dg-badge--proxy, .dg-badge--accent { --_c: var(--dg-ember-300); background: var(--dg-accent-tint); border-color: var(--dg-accent-rule); }
+[data-theme="parchment"] .dg-badge--proxy, [data-theme="parchment"] .dg-badge--accent { --_c: var(--dg-ember-700); }
+.dg-badge--warning, .dg-badge--premium { --_c: var(--dg-warning); }
+.dg-badge--success { --_c: var(--dg-success); }
+.dg-badge--info { --_c: var(--dg-info); }
+.dg-badge--danger { --_c: var(--dg-danger); }
+
+.dg-tag {
+  display: inline-flex; align-items: center; gap: var(--dg-space-2); height: 32px; padding: 0 var(--dg-space-3);
+  border-radius: var(--dg-radius-chip); border: 1px solid var(--dg-border-control);
+  background: var(--dg-surface-raised); color: var(--dg-text); font: 600 13px/1 var(--dg-font-sans); white-space: nowrap;
+}
+.dg-tag:has(.dg-tag__remove) { padding-right: 4px; }
+.dg-tag__remove { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border: 0; border-radius: var(--dg-radius-xs); background: transparent; color: var(--dg-text-muted); cursor: pointer; }
+.dg-tag__remove:hover { color: var(--dg-text); background: var(--dg-surface-overlay); }
+button.dg-tag { cursor: pointer; }
+.dg-tag[aria-pressed="true"] { background: var(--dg-accent); border-color: var(--dg-accent); color: var(--dg-on-accent); }
+.dg-tag--add { background: transparent; border-style: dashed; color: var(--dg-text-muted); }
+.dg-tag-list { display: flex; flex-wrap: wrap; gap: var(--dg-space-2); }
+
+/* Tabs: switch views of the SAME content inside a page. For moving between pages use navigation. */
+.dg-tabs { display: flex; gap: 28px; border-bottom: 1px solid var(--dg-border-strong); overflow-x: auto; scrollbar-width: none; }
+.dg-tabs::-webkit-scrollbar { display: none; }
+.dg-tab { flex: none; padding: 0 0 14px; border: 0; background: none; color: var(--dg-text-muted); font: 500 15px/1 var(--dg-font-sans); cursor: pointer; text-decoration: none; transition: color var(--dg-duration-fast); }
+.dg-tab:hover { color: var(--dg-text); }
+.dg-tab[aria-selected="true"], .dg-tab[aria-current="page"] { color: var(--dg-text); font-weight: 600; box-shadow: inset 0 -2px 0 var(--dg-accent); }
+.dg-tab:focus-visible { outline-offset: 4px; border-radius: 2px; }
+@media (max-width: 767.98px) { .dg-tabs { gap: var(--dg-space-6); } }
+.dg-tabpanel[hidden] { display: none; }
+
+/* Tooltip: e2 surface, 200ms delay, max 260px. Wrap trigger in .dg-tooltip-wrap; dg.js not required. */
+.dg-tooltip-wrap { position: relative; display: inline-flex; }
+.dg-tooltip {
+  position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: var(--dg-z-tooltip);
+  width: max-content; max-width: 260px; padding: 10px 12px; border-radius: var(--dg-radius-sm);
+  background: var(--dg-surface-overlay); border: 1px solid var(--dg-border-control); box-shadow: var(--dg-shadow-e2);
+  color: var(--dg-text-label); font: 400 13px/1.5 var(--dg-font-sans);
+  opacity: 0; visibility: hidden; transform: translate(-50%, 4px); pointer-events: none;
+  transition: opacity var(--dg-duration-base) var(--dg-ease-forge), transform var(--dg-duration-base) var(--dg-ease-forge), visibility 0s linear var(--dg-duration-base);
+}
+.dg-tooltip-wrap:hover .dg-tooltip, .dg-tooltip-wrap:focus-within .dg-tooltip { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition-delay: 200ms, 200ms, 0s; }
+.dg-tooltip--static { position: static; opacity: 1; visibility: visible; transform: none; }

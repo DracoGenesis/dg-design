@@ -1,0 +1,39 @@
+/* Backgrounds & texture.
+   The dragon-scale tile is NEVER shown raw — always through one of the six treatments below.
+   Max ~20% of a layout. Never behind body text. Tools and forms use plain Obsidian.
+   --dg-tile sets the tile size (default 200px; 400px for full-width heroes). */
+
+.dg-tx { --dg-tile: 200px; --_tile: url('../assets/texture/scale-tile.webp') 0 0 / var(--dg-tile) auto repeat; background-color: var(--dg-obsidian-950); color: var(--dg-obsidian-100); }
+
+/* Obsidian Scrim — quiet texture for large panels, social frames */
+.dg-tx--scrim { background: linear-gradient(rgba(13,10,11,.62), rgba(13,10,11,.62)), var(--_tile); background-color: var(--dg-obsidian-900); }
+
+/* Ember Glow — warm light rising from below; promos, end screens */
+.dg-tx--glow { background: radial-gradient(circle at 70% 115%, rgba(255,59,31,.6), rgba(255,59,31,0) 62%), linear-gradient(rgba(13,10,11,.5), rgba(13,10,11,.5)), var(--_tile); background-color: var(--dg-obsidian-900); }
+
+/* Forge Sweep — hero: dark on the text side, texture revealed to the right */
+.dg-tx--sweep { background: radial-gradient(ellipse at 85% 120%, rgba(255,59,31,.6), rgba(255,59,31,0) 60%), linear-gradient(90deg, rgba(13,10,11,.97) 0%, rgba(13,10,11,.85) 40%, rgba(13,10,11,.3) 100%), var(--_tile); }
+@media (max-width: 767.98px) {
+  .dg-tx--sweep { background: radial-gradient(ellipse at 50% 120%, rgba(255,59,31,.5), rgba(255,59,31,0) 60%), linear-gradient(180deg, rgba(13,10,11,.94) 0%, rgba(13,10,11,.8) 70%, rgba(13,10,11,.55) 100%), var(--_tile); background-color: var(--dg-obsidian-950); }
+}
+
+/* Spotlight — centered subject (a card, a logo, a thumbnail face) */
+.dg-tx--spotlight { background: radial-gradient(ellipse at 50% 50%, rgba(255,59,31,.3) 0%, rgba(13,10,11,.35) 35%, rgba(13,10,11,.97) 78%), var(--_tile); }
+
+/* Smolder — scattered embers; livestream scenes, event art */
+.dg-tx--smolder { background: radial-gradient(circle at 14% 82%, rgba(255,59,31,.45), rgba(255,59,31,0) 24%), radial-gradient(circle at 78% 22%, rgba(255,107,85,.3), rgba(255,107,85,0) 20%), radial-gradient(circle at 90% 90%, rgba(255,59,31,.4), rgba(255,59,31,0) 22%), linear-gradient(rgba(13,10,11,.74), rgba(13,10,11,.74)), var(--_tile); }
+
+/* Ember Band — thin horizontal strips: announcement bar, lower thirds */
+.dg-tx--band { --dg-tile: 110px; background: linear-gradient(90deg, rgba(13,10,11,.92) 0%, rgba(13,10,11,.55) 35%, rgba(13,10,11,.55) 70%, rgba(13,10,11,.9) 100%), var(--_tile); border-top: 1px solid rgba(255,59,31,.75); border-bottom: 1px solid rgba(255,59,31,.75); }
+
+/* Atmospheric (no texture): corona glow + Wyrm watermark. For CTA panels and display screens.
+   <div class="dg-atmos"><span class="dg-atmos__corona"></span><img class="dg-atmos__wyrm" src="…/icon-mono-parchment.svg" alt=""> …content… </div> */
+.dg-atmos { position: relative; overflow: hidden; isolation: isolate; background: var(--dg-obsidian-950); }
+.dg-atmos > :not(.dg-atmos__corona, .dg-atmos__wyrm) { position: relative; }
+.dg-atmos__corona { position: absolute; z-index: -1; right: -160px; top: -200px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(255,59,31,.2) 0%, rgba(255,59,31,0) 62%); pointer-events: none; }
+.dg-atmos__wyrm { position: absolute; z-index: -1; left: -60px; bottom: -110px; width: 300px; height: auto; opacity: .05; pointer-events: none; }
+
+/* CTA panel built on the atmospheric background */
+.dg-cta-panel { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--dg-space-8); padding: var(--dg-space-16) var(--dg-space-12); border: 1px solid var(--dg-border); border-radius: var(--dg-radius-md); }
+.dg-cta-panel__copy { display: flex; flex-direction: column; gap: var(--dg-space-3); max-width: 620px; }
+@media (max-width: 767.98px) { .dg-cta-panel { padding: var(--dg-space-8) var(--dg-space-6); } .dg-cta-panel .dg-btn { width: 100%; } }

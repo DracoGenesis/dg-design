@@ -1,0 +1,101 @@
+/* Forms — field, inputs, select, textarea, search, stepper, checkbox, radio, switch, segmented, slider.
+   Spacing: label → helper 4 · helper (or label) → control 8 · field → field 24 · last field → actions 32.
+   Helper and error text sit BETWEEN the label and the control. */
+
+.dg-form { display: flex; flex-direction: column; gap: var(--dg-space-6); }
+.dg-form > .dg-actions { margin-top: var(--dg-space-2); } /* 24 + 8 = 32 before actions */
+
+.dg-field { display: flex; flex-direction: column; gap: var(--dg-space-2); min-width: 0; border: 0; padding: 0; margin: 0; }
+.dg-field__head { display: flex; flex-direction: column; gap: var(--dg-space-1); }
+.dg-label, .dg-field legend { padding: 0; font: 600 13px/16px var(--dg-font-sans); color: var(--dg-text-label); }
+.dg-label .dg-optional { font-weight: 400; color: var(--dg-text-muted); }
+.dg-help { font: 400 12px/1.4 var(--dg-font-sans); color: var(--dg-text-muted); }
+.dg-error { display: flex; align-items: center; gap: 6px; font: 400 12px/1.4 var(--dg-font-sans); color: var(--dg-danger); }
+.dg-error::before {
+  content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--dg-danger) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 4.5v4.2M8 11.2v.1' stroke='%230D0A0B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat;
+}
+
+.dg-input, .dg-select, .dg-textarea {
+  width: 100%; height: var(--dg-control-height); padding: 0 14px;
+  background: var(--dg-bg); color: var(--dg-text);
+  border: 1px solid var(--dg-border-control); border-radius: var(--dg-radius-sm);
+  font: 400 15px/1.2 var(--dg-font-sans);
+  transition: border-color var(--dg-duration-fast) var(--dg-ease-forge), box-shadow var(--dg-duration-fast) var(--dg-ease-forge);
+}
+.dg-input::placeholder, .dg-textarea::placeholder { color: var(--dg-text-disabled); }
+.dg-input:hover, .dg-select:hover, .dg-textarea:hover { border-color: var(--dg-text-disabled); }
+.dg-input:focus, .dg-select:focus, .dg-textarea:focus { outline: none; border-color: var(--dg-accent-hover); box-shadow: var(--dg-shadow-focus-field); }
+.dg-input[aria-invalid="true"], .dg-select[aria-invalid="true"], .dg-textarea[aria-invalid="true"] { border-color: var(--dg-danger); }
+.dg-input:disabled, .dg-select:disabled, .dg-textarea:disabled { color: var(--dg-text-disabled); border-color: var(--dg-border-strong); cursor: not-allowed; }
+.dg-input--mono { font-family: var(--dg-font-mono); font-weight: 500; }
+.dg-textarea { height: auto; min-height: 112px; padding: 12px 14px; line-height: 1.6; resize: vertical; }
+
+.dg-select {
+  appearance: none; padding-right: 42px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23978A8B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; background-size: 16px;
+}
+
+/* Input with a leading icon and/or trailing adornment (search, units, ⌘K) */
+.dg-input-group { position: relative; display: flex; align-items: center; }
+.dg-input-group > .dg-input { flex: 1; }
+.dg-input-group__icon { position: absolute; left: 14px; width: 18px; height: 18px; color: var(--dg-text-muted); pointer-events: none; }
+.dg-input-group__icon ~ .dg-input { padding-left: 42px; }
+.dg-input-group__end { position: absolute; right: 12px; display: flex; align-items: center; gap: var(--dg-space-2); color: var(--dg-text-muted); font-size: 14px; }
+.dg-input-group:has(.dg-input-group__end) > .dg-input { padding-right: 64px; }
+.dg-kbd { font: 500 12px/1 var(--dg-font-mono); color: var(--dg-text-muted); border: 1px solid var(--dg-border-control); border-radius: var(--dg-radius-xs); padding: 4px 6px; }
+
+/* Stepper */
+.dg-stepper { display: inline-flex; align-items: stretch; width: fit-content; border: 1px solid var(--dg-border-control); border-radius: var(--dg-radius-sm); overflow: hidden; }
+.dg-stepper button { width: var(--dg-control-height); height: calc(var(--dg-control-height) - 2px); border: 0; background: transparent; color: var(--dg-text); font-size: 20px; cursor: pointer; }
+.dg-stepper button:hover { background: var(--dg-surface-raised); }
+.dg-stepper button:focus-visible { outline-offset: -2px; }
+.dg-stepper input, .dg-stepper output { width: 64px; border: 0; border-inline: 1px solid var(--dg-border-control); background: transparent; color: var(--dg-text); text-align: center; font: 500 18px/42px var(--dg-font-mono); -moz-appearance: textfield; }
+.dg-stepper input::-webkit-inner-spin-button, .dg-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Checkbox & radio — native inputs, restyled */
+.dg-check { display: inline-flex; align-items: flex-start; gap: var(--dg-space-3); min-height: 24px; font: 400 15px/1.35 var(--dg-font-sans); color: var(--dg-text); cursor: pointer; }
+.dg-check input { appearance: none; flex: none; width: 20px; height: 20px; margin: 0; border: 1.5px solid var(--dg-text-disabled); border-radius: 5px; background: transparent; display: grid; place-content: center; cursor: pointer; transition: background-color var(--dg-duration-fast), border-color var(--dg-duration-fast); }
+.dg-check input[type="radio"] { border-radius: 50%; }
+.dg-check input:checked { border-color: var(--dg-accent); background: var(--dg-accent); }
+.dg-check input[type="checkbox"]:checked::after { content: ""; width: 14px; height: 14px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%230D0A0B' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat; }
+.dg-check input[type="radio"]:checked { background: transparent; border-width: 6px; }
+.dg-check input:focus-visible { outline: 2px solid var(--dg-focus); outline-offset: 2px; }
+.dg-check input:disabled { opacity: .45; cursor: not-allowed; }
+.dg-check__text { display: flex; flex-direction: column; gap: var(--dg-space-1); }
+
+/* Option card — a radio/checkbox with a bordered, selectable container */
+.dg-option { display: flex; gap: var(--dg-space-3); align-items: flex-start; padding: 12px 14px; border: 1px solid var(--dg-border-strong); border-radius: var(--dg-radius-sm); cursor: pointer; transition: border-color var(--dg-duration-fast), background-color var(--dg-duration-fast); }
+.dg-option:hover { border-color: var(--dg-border-control); }
+.dg-option:has(input:checked) { border-color: var(--dg-accent); background: color-mix(in srgb, var(--dg-accent) 6%, transparent); }
+.dg-option-group { display: flex; flex-direction: column; gap: var(--dg-space-2); }
+
+/* Switch: <label class="dg-switch"><input type="checkbox" role="switch"> Label</label> */
+.dg-switch { display: inline-flex; align-items: center; gap: var(--dg-space-3); font: 400 15px/1.3 var(--dg-font-sans); cursor: pointer; }
+.dg-switch input { appearance: none; flex: none; position: relative; width: 44px; height: 26px; margin: 0; border-radius: var(--dg-radius-pill); background: var(--dg-border-strong); cursor: pointer; transition: background-color var(--dg-duration-base) var(--dg-ease-forge); }
+.dg-switch input::after { content: ""; position: absolute; left: 3px; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--dg-text-muted); transition: transform var(--dg-duration-base) var(--dg-ease-forge), background-color var(--dg-duration-base); }
+.dg-switch input:checked { background: var(--dg-accent); }
+.dg-switch input:checked::after { transform: translateX(18px); background: var(--dg-on-accent); }
+.dg-switch input:focus-visible { outline: 2px solid var(--dg-focus); outline-offset: 2px; }
+.dg-switch--between { display: flex; justify-content: space-between; }
+.dg-switch--between input { order: 2; }
+
+/* Segmented control: buttons with aria-pressed, or radios inside labels */
+.dg-segmented { display: inline-flex; gap: 2px; width: fit-content; padding: 4px; background: var(--dg-bg); border: 1px solid var(--dg-border-strong); border-radius: var(--dg-radius-alert); }
+.dg-segmented > button, .dg-segmented > label { display: inline-flex; align-items: center; justify-content: center; height: var(--dg-control-height-sm); padding: 0 var(--dg-space-4); border: 1px solid transparent; border-radius: 7px; background: transparent; color: var(--dg-text-muted); font: 600 14px/1 var(--dg-font-sans); cursor: pointer; white-space: nowrap; }
+.dg-segmented > label input { position: absolute; opacity: 0; pointer-events: none; }
+.dg-segmented > button:hover, .dg-segmented > label:hover { color: var(--dg-text); }
+.dg-segmented > [aria-pressed="true"], .dg-segmented > label:has(input:checked) { background: var(--dg-surface-overlay); border-color: var(--dg-border-control); color: var(--dg-text); }
+.dg-segmented > label:has(input:focus-visible) { outline: 2px solid var(--dg-focus); outline-offset: 2px; }
+
+/* Slider: <input type="range" class="dg-range" style="--dg-range:58%"> (dg.js keeps --dg-range in sync) */
+.dg-range { appearance: none; width: 100%; height: 24px; margin: 0; background: transparent; cursor: pointer; --dg-range: 50%; }
+.dg-range::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--dg-accent) var(--dg-range), var(--dg-border-strong) var(--dg-range)); }
+.dg-range::-moz-range-track { height: 4px; border-radius: 2px; background: var(--dg-border-strong); }
+.dg-range::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--dg-accent); }
+.dg-range::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; margin-top: -8px; border-radius: 50%; background: var(--dg-text); box-shadow: 0 0 0 4px color-mix(in srgb, var(--dg-accent) 30%, transparent); border: 0; }
+.dg-range::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--dg-text); box-shadow: 0 0 0 4px color-mix(in srgb, var(--dg-accent) 30%, transparent); border: 0; }
+.dg-range:focus-visible { outline: none; }
+.dg-range:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--dg-focus); outline-offset: 3px; }
+.dg-range:focus-visible::-moz-range-thumb { outline: 2px solid var(--dg-focus); outline-offset: 3px; }

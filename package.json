@@ -1,0 +1,35 @@
+{
+  "name": "@dracogenesis/design",
+  "version": "1.0.0",
+  "description": "Draco Genesis design system — tokens, fonts, brand assets and framework-free CSS components for the website, player tools and DG Forge.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "dist/tokens.cjs",
+  "module": "dist/tokens.mjs",
+  "types": "dist/tokens.d.ts",
+  "style": "dist/dg.css",
+  "exports": {
+    ".": { "types": "./dist/tokens.d.ts", "import": "./dist/tokens.mjs", "require": "./dist/tokens.cjs" },
+    "./css": "./dist/dg.css",
+    "./css/min": "./dist/dg.min.css",
+    "./css/*": "./dist/css/*",
+    "./tokens.json": "./dist/tokens.json",
+    "./tailwind": "./dist/tailwind-preset.cjs",
+    "./js": "./dist/dg.js",
+    "./assets/*": "./dist/assets/*",
+    "./fonts/*": "./dist/fonts/*"
+  },
+  "files": ["dist", "CLAUDE.md", "README.md"],
+  "sideEffects": ["*.css", "./dist/dg.js"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "demo": "npm run build && npx --yes serve -l 4173 .",
+    "release": "npm run build && git add -A && git commit -m \"release v$npm_package_version\" && git tag v$npm_package_version"
+  },
+  "devDependencies": {
+    "@fontsource/cinzel": "^5.0.0",
+    "@fontsource/crimson-pro": "^5.0.0",
+    "@fontsource/inter": "^5.0.0",
+    "@fontsource/jetbrains-mono": "^5.0.0"
+  }
+}
