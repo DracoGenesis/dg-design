@@ -1,5 +1,5 @@
 /* Draco Genesis UI behaviours — optional, dependency-free, progressive enhancement.
-   Load with <script src=".../dg.js" defer></script>. Everything is wired by data attributes,
+   Load it with a deferred script tag. Everything is wired by data attributes,
    so pages work in plain HTML/PHP and in Electron renderers alike. Exposes window.DG. */
 (function () {
   'use strict';
